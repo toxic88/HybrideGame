@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.toxic.demoApp</groupId>
+        <artifactId>app-demo-arche</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>app-demo-arche-html</artifactId>
+    <packaging>war</packaging>
+    <name>ApplicationDemo HTML</name>
+
+    <properties>
+        <gwt.module>org.toxic.demoApp.AppDemo</gwt.module>
+        <gwt.name>ApplicationDemo</gwt.name>
+    </properties>
+
+    <dependencies>
+    
+        <dependency>
+            <groupId>org.toxic.demoApp</groupId>
+            <artifactId>app-demo-arche-core</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.toxic</groupId>
+            <artifactId>html</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.toxic.demoApp</groupId>
+            <artifactId>app-demo-arche-assets</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-html</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>${gwt.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <configuration>
+                        <buildcommands>
+                            <buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+                            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+                            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+                            <buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
+                            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+                        </buildcommands>
+                        <projectnatures>
+                            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                            <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+                            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+                            <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                        </projectnatures>
+                        <classpathContainers>
+                            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                            <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+                        </classpathContainers>
+                        <excludes>
+                            <exclude>com.google.gwt:gwt-servlet</exclude>
+                            <exclude>com.google.gwt:gwt-user</exclude>
+                            <exclude>com.google.gwt:gwt-dev</exclude>
+                            <exclude>javax.validation:validation-api</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                
+        </plugins>
+    </build>
+</project>
